@@ -1,0 +1,153 @@
+@import url("https://fonts.googleapis.com/css2?family=Zilla+Slab:ital@0;1&display=swap");
+
+:root {
+    --left-bg-color: rgba(17, 45, 84, 0.7);
+    --right-bg-color: rgba(240, 127, 19, 0.7);
+    --left-btn-color: rgba(17, 45, 84);
+    --right-btn-color: rgba(240, 127, 19);
+
+    --hover-width: 60%;
+    --other-width: 40%;
+
+    --speed: 1000ms;
+}
+
+html {
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
+
+*,
+*::after,
+*::before {
+    box-sizing: inherit;
+}
+
+body {
+    font-family: "Zilla Slab", serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    overflow: hidden;
+    margin: 0;
+}
+
+h1 {
+    font-size: 4rem;
+    color: #fff;
+    position: absolute;
+    left: 50%;
+    top: 10%;
+    transform: translateX(-50%);
+    white-space: nowrap;
+}
+
+.button {
+    text-align: center;
+    font-size: 1.4rem;
+    font-style: italic;
+    color: #fff;
+    position: absolute;
+    left: 50%;
+    top: 70%;
+    transform: translateX(-50%);
+    text-decoration: none;
+    padding: 1rem;
+    border: 0.2rem solid #fff;
+}
+
+.container {
+    position: relative;
+    height: 100%;
+    width: 100%;
+    background: #222;
+}
+
+.split {
+    position: absolute;
+    width: 50%;
+    height: 100%;
+    overflow: hidden;
+}
+
+.split.left {
+    left: 0;
+    background: url(https://images5.alphacoders.com/617/617387.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.split.left::before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: var(--left-bg-color);
+}
+
+.split.left .button:hover {
+    background: var(--left-btn-color);
+    border-color: var(--left-btn-color);
+}
+
+.split.right {
+    right: 0;
+    background: url(https://www.amd.com/system/files/2022-05/1413018-am5-ryzen-1260x709.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.split.right::before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: var(--right-bg-color);
+}
+
+.split.right .button:hover {
+    background: var(--right-btn-color);
+    border-color: var(--right-btn-color);
+}
+
+.split.left,
+.split.right,
+.split.right::before,
+.split.left::before {
+    transition: all var(--speed) ease-out;
+}
+
+.hover-left .left {
+    width: var(--hover-width);
+}
+
+.hover-left .right {
+    width: var(--other-width);
+}
+
+.hover-right .left {
+    width: var(--other-width);
+}
+
+.hover-right .right {
+    width: var(--hover-width);
+}
+
+@media (max-width: 768px) {
+    :root {
+        --hover-width: 55%;
+        --other-width: 45%;
+    }
+
+    h1 {
+        font-size: 2rem;
+    }
+    .button {
+        padding: 0.2rem;
+        font-size: 1rem;
+    }
+}
